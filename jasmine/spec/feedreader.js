@@ -116,7 +116,8 @@ $(function() {
             // Test that we have at least one entry <a> link
             var entry = $('.feed a').text();
 
-            expect(entry).not.toBe("");
+            //expect(entry).not.toBe("");
+            expect($('.feed a').text().length).not.toEqual(0);
             done();
         });
 
@@ -135,6 +136,7 @@ $(function() {
 
         beforeEach(function(done) {
             // Original feed.
+            loadFeed(0); // Make sure we start at feed0 for this test.
             feed0 = $('.feed a').text();
 
             // Get new feed(1).
@@ -151,10 +153,10 @@ $(function() {
 
         it('should change content', function() {
             // Original feed0 should not be the same as feed1.
-            expect(feed0).not.toBe(feed1);
+            expect(feed0).not.toEqual(feed1);
 
             // feed1 should also not be the same as feed2.
-            expect(feed1).not.toBe(feed2);
+            expect(feed1).not.toEqual(feed2);
         });
     });
 }());
